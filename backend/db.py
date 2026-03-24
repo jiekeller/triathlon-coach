@@ -41,6 +41,15 @@ def init_db():
             content TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT NOW()
         );
+
+        CREATE TABLE IF NOT EXISTS user_files (
+            id SERIAL PRIMARY KEY,
+            user_id TEXT NOT NULL,
+            filename TEXT NOT NULL,
+            mime_type TEXT NOT NULL,
+            data_base64 TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT NOW()
+        );
     """)
     conn.commit()
     cur.close()

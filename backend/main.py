@@ -8,6 +8,7 @@ import os
 from db import init_db
 from routes.chat import router as chat_router
 from routes.strava import router as strava_router
+from routes.plan import router as plan_router
 
 app = FastAPI(title="Triathlon Coach API")
 
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(chat_router, prefix="/api")
 app.include_router(strava_router, prefix="/api/strava")
+app.include_router(plan_router, prefix="/api")
 
 
 @app.on_event("startup")

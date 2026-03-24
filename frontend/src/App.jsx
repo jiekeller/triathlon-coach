@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import Chat from './components/Chat.jsx'
+import PlanUpload from './components/PlanUpload.jsx'
+import FileUpload from './components/FileUpload.jsx'
 
 // Simple user ID — in production this would come from auth
 const USER_ID = 'demo_user'
@@ -36,6 +38,8 @@ export default function App() {
           <span style={{ fontWeight: 700, fontSize: 18 }}>Triathlon Coach</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <FileUpload userId={USER_ID} />
+          <PlanUpload userId={USER_ID} />
           {stravaConnected ? (
             <span style={{
               background: '#1a3a2a',

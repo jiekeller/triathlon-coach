@@ -51,4 +51,10 @@ def run_agent(user_id: str, messages: list[dict]) -> str:
                 "content": result,
             })
 
+        # If no tool calls were found, return whatever text is available
+        if not tool_results:
+            return next(
+                (b.text for b in response.content if b.type == "text"), ""
+            )
+
         messages.append({"role": "user", "content": tool_results})
